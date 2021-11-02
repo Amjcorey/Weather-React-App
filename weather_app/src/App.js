@@ -10,10 +10,10 @@ function App() {
         </header>
         <main >
           
-            <Forecast />
+            <Forecast city="Seattle" />
            
         </main>
-        <footer>Page creat by Amanda Corey</footer>
+        <footer>Page created by Amanda Corey</footer>
       
     </div>
   );

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Forecast.css";
 
 export default function getForecast(props) {
 
-   
+ //   const [temperature, setTemperature] = useState(null);
+ //   const [humidity, setHumidity] = useState(null);
+  //  const [wind, setWind] = useState(null);
+  //  const [city, setCity] = useState(null);
+  //  const [description, setDescription] = useState(null);
+  //  const [icon, setIcon] = useState(null);
 
     function handleResponse(response) {
-      //  event.preventDefault();
+     // event.preventDefault();
       alert(`The weather in ${response.data.name} is ${response.data.main.temp}`);
     }
 
@@ -34,4 +39,6 @@ export default function getForecast(props) {
 
         </div>
     );
+
+   
 }

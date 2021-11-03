@@ -2,41 +2,40 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Forecast.css";
 
-export default function getForecast(props) {
+export default function getForecast() {
 
- //   const [temperature, setTemperature] = useState(null);
+   const [temperature, setTemperature] = useState(null);
  //   const [humidity, setHumidity] = useState(null);
-  //  const [wind, setWind] = useState(null);
-  //  const [city, setCity] = useState(null);
+//  const [wind, setWind] = useState(null);
+    const [city, setCity] = useState("");
   //  const [description, setDescription] = useState(null);
   //  const [icon, setIcon] = useState(null);
+    
+    
+    
+    function displayWeather(response) {
+       setTemperature(Math.round(response.data.main.temp));
 
+    }
+   
     function handleSubmit(event) {
       event.preventDefault();
      // alert(`The weather in ${response.data.name} is ${response.data.main.temp}`);
-        
+     // have to have access to city, make api call, update weather UI   
         let apiKey = "70de72ce25d0801c193edd1d17ced422";
         let units = "metric";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
         
-        axios.get(apiUrl).then(displayWeather);
-        
+        axios.get(apiUrl).then(displayWeather);     
     }
 
-
-    function displayWeather(response) {
-        setTemperature(Math.round(response.data.main.temp));
-        setDescription(response.data.weather[0].description);
-        setWind(Math.round(response.data.wind.speed));
-        setHumidity(response.data.main.humidity);
-        setIcon(
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-  }
+     function displayCity(event) {
+        setCity(event.target.value);
+    }
 
     return (
         <div className="container">
-            <form className="form" onSubmit="handleSubmit">
+            <form className="form" onSubmit={handleSubmit}>
                 <input
                     type="search"
                     placeholder="Enter a city"
@@ -54,6 +53,5 @@ export default function getForecast(props) {
             </div>
         </div>
     );
-
    
 }

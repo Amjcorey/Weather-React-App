@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import Forecast from "./Forecast";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -13,10 +13,16 @@ function App() {
             <Forecast city="Seattle" />
            
         </main>
-        <footer>Page created by Amanda Corey</footer>
+      <footer>
+        Coded by Amanda Corey and is
+        <a href="https://github.com/Amjcorey/weather-react-app" target="_blank">
+          open-sourced
+        </a>
+        on GitHub
+      </footer>
       
     </div>
   );
 }
 
-export default App;
+
